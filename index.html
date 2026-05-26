@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StucCan't — Team Portfolio</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0e0e11;color:#e8e6ff}
+nav{position:sticky;top:0;z-index:100;background:#13121a;border-bottom:0.5px solid #2a2840;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:58px}
+.brand{font-size:17px;font-weight:500;color:#a89ef5;letter-spacing:.01em}
+.brand span{color:#534AB7}
+.nav-links{display:flex;gap:4px}
+.nav-links a{font-size:13px;color:#8880bb;text-decoration:none;cursor:pointer;padding:5px 13px;border-radius:8px;transition:all .2s;border:0.5px solid transparent}
+.nav-links a:hover{color:#c8c2f7;background:#1e1c2e}
+.nav-links a.active{color:#c8c2f7;background:#1e1c2e;border-color:#3a3460}
+.page{display:none;max-width:820px;margin:0 auto;padding:2.5rem 1.75rem}
+.page.active{display:block}
+.hero{text-align:center;padding:3.5rem 1rem 2.5rem}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:#1a1828;border:0.5px solid #3a3460;color:#8880bb;font-size:12px;padding:5px 14px;border-radius:20px;margin-bottom:1.5rem}
+.hero h1{font-size:40px;font-weight:500;color:#e8e6ff;margin-bottom:.75rem;letter-spacing:-.02em}
+.hero h1 span{color:#7F77DD}
+.hero p{font-size:15px;color:#8880bb;max-width:520px;margin:0 auto 1.5rem;line-height:1.8}
+.hero-meta{display:flex;justify-content:center;gap:.75rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.meta-pill{display:inline-flex;align-items:center;gap:7px;background:#1a1828;border:0.5px solid #2a2840;color:#8880bb;font-size:13px;padding:7px 16px;border-radius:10px}
+.meta-pill i{color:#7F77DD;font-size:15px}
+.triangle-fact{background:#1a1828;border:0.5px solid #3a3460;border-radius:12px;padding:1rem 1.5rem;display:inline-flex;align-items:flex-start;gap:12px;text-align:left;max-width:480px;margin:0 auto}
+.triangle-fact i{color:#7F77DD;font-size:20px;margin-top:2px;flex-shrink:0}
+.triangle-fact p{font-size:13px;color:#8880bb;line-height:1.7}
+.triangle-fact strong{color:#c8c2f7}
+.sec-eye{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#534AB7;margin-bottom:.4rem}
+.sec-title{font-size:24px;font-weight:500;color:#e8e6ff;margin-bottom:.4rem}
+.sec-sub{font-size:14px;color:#8880bb;margin-bottom:2rem;line-height:1.7}
+.flip-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+@media(max-width:600px){.flip-grid{grid-template-columns:1fr}}
+.flip-card{height:265px;cursor:pointer;perspective:1200px}
+.flip-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+.flip-card.flipped .flip-inner{transform:rotateY(180deg)}
+.flip-front,.flip-back{position:absolute;inset:0;border-radius:16px;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.flip-front{background:#13121a;border:0.5px solid #2a2840;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1.5rem;transition:border-color .2s}
+.flip-card:hover .flip-front{border-color:#534AB7}
+.flip-back{background:#1a1828;border:0.5px solid #3a3460;transform:rotateY(180deg);padding:1.4rem;display:flex;flex-direction:column;justify-content:flex-start}
+.avatar-ring{width:72px;height:72px;border-radius:50%;border:1.5px solid #3a3460;display:flex;align-items:center;justify-content:center;margin-bottom:14px;transition:border-color .2s}
+.flip-card:hover .avatar-ring{border-color:#7F77DD}
+.avatar-inner{width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:500}
+.front-name{font-size:15px;font-weight:500;color:#e8e6ff;margin-bottom:4px;text-align:center}
+.front-role{font-size:12px;color:#534AB7;margin-bottom:12px;text-align:center}
+.flip-hint{font-size:11px;color:#3a3460;display:flex;align-items:center;gap:4px}
+.back-top{display:flex;align-items:center;gap:10px;margin-bottom:12px;padding-bottom:10px;border-bottom:0.5px solid #2a2840}
+.back-av{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:500;flex-shrink:0}
+.back-name{font-size:14px;font-weight:500;color:#e8e6ff}
+.back-role{font-size:11px;color:#534AB7}
+.drow{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px;font-size:12px;line-height:1.5}
+.drow i{font-size:13px;color:#534AB7;margin-top:2px;flex-shrink:0}
+.drow .dl{color:#8880bb;white-space:nowrap}
+.drow .dv{color:#c8c2f7;margin-left:3px}
+.skills-wrap{background:#13121a;border:0.5px solid #2a2840;border-radius:14px;padding:1.5rem;margin-bottom:1.25rem}
+.skill-member{margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:0.5px solid #1e1c2e}
+.skill-member:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.sm-header{display:flex;align-items:center;gap:10px;margin-bottom:.75rem}
+.sm-av{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;flex-shrink:0}
+.sm-name{font-size:14px;font-weight:500;color:#e8e6ff}
+.sm-role{font-size:11px;color:#534AB7}
+.sm-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:.5rem}
+.stag{font-size:11px;padding:3px 10px;border-radius:20px;border:0.5px solid}
+.sm-bar-row{display:flex;align-items:center;gap:10px;margin-top:6px}
+.sm-blabel{font-size:12px;color:#8880bb;min-width:80px}
+.sm-bg{flex:1;height:5px;background:#1e1c2e;border-radius:3px;overflow:hidden}
+.sm-fill{height:100%;border-radius:3px}
+.sm-pct{font-size:11px;color:#534AB7;min-width:32px;text-align:right}
+.shared-row{background:#1a1828;border:0.5px solid #3a3460;border-radius:10px;padding:.75rem 1rem;display:flex;align-items:center;gap:10px;margin-top:.5rem}
+.shared-row i{color:#7F77DD;font-size:16px}
+.shared-row p{font-size:13px;color:#c8c2f7;font-weight:500}
+.shared-row span{font-size:12px;color:#8880bb;display:block}
+.wgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:1.25rem}
+@media(max-width:500px){.wgrid{grid-template-columns:1fr}}
+.witem{background:#13121a;border:0.5px solid #2a2840;border-radius:12px;padding:1rem 1.25rem;cursor:pointer;transition:border-color .2s}
+.witem:hover{border-color:#534AB7}
+.witem-top{display:flex;align-items:center;gap:10px;margin-bottom:.4rem}
+.witem-top i{font-size:17px;color:#7F77DD}
+.witem-top p{font-size:13px;font-weight:500;color:#c8c2f7}
+.witem span{font-size:12px;color:#534AB7}
+.witem .expand-hint{font-size:11px;color:#3a3460;margin-top:6px;display:flex;align-items:center;gap:4px}
+.wdetail{display:none;margin-top:.75rem;padding-top:.75rem;border-top:0.5px solid #1e1c2e}
+.wdetail.open{display:block}
+.wdetail-row{display:flex;align-items:flex-start;gap:8px;margin-bottom:7px;font-size:12px}
+.wdetail-row i{font-size:13px;color:#534AB7;margin-top:2px}
+.wdetail-row span{color:#8880bb;line-height:1.6}
+.card-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:500px){.card-grid{grid-template-columns:1fr}}
+.dcard{background:#13121a;border:0.5px solid #2a2840;border-radius:14px;padding:1.25rem;transition:border-color .2s}
+.dcard:hover{border-color:#3a3460}
+.dcard .dicon{font-size:20px;color:#7F77DD;margin-bottom:.75rem}
+.dcard h4{font-size:14px;font-weight:500;color:#e8e6ff;margin-bottom:.5rem}
+.dcard p{font-size:13px;color:#8880bb;line-height:1.7}
+.cbox{background:#13121a;border:0.5px solid #2a2840;border-radius:14px;padding:2rem}
+.cbox-intro{font-size:14px;color:#8880bb;margin-bottom:1.5rem;line-height:1.7}
+.contact-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem}
+@media(max-width:500px){.contact-cards{grid-template-columns:1fr}}
+.ccard{background:#1a1828;border:0.5px solid #2a2840;border-radius:12px;padding:1rem;text-align:center}
+.ccard-av{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:500;margin:0 auto 10px}
+.ccard-name{font-size:13px;font-weight:500;color:#e8e6ff;margin-bottom:4px}
+.ccard-mail{font-size:11px;color:#534AB7;word-break:break-all;line-height:1.5}
+.clinks{display:flex;justify-content:center;gap:.75rem;flex-wrap:wrap;margin-top:1.5rem;padding-top:1.5rem;border-top:0.5px solid #1e1c2e}
+.clink{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:#8880bb;text-decoration:none;padding:8px 18px;border:0.5px solid #2a2840;border-radius:9px;transition:all .2s}
+.clink:hover{border-color:#534AB7;color:#c8c2f7;background:#1e1c2e}
+footer{text-align:center;padding:2rem;font-size:12px;color:#3a3460;border-top:0.5px solid #1e1c2e;margin-top:1rem}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="brand"><span>#</span> StucCan't</span>
+  <div class="nav-links">
+    <a onclick="show('home')" id="n-home" class="active">Home</a>
+    <a onclick="show('team')" id="n-team">Team</a>
+    <a onclick="show('skills')" id="n-skills">Skills</a>
+    <a onclick="show('goals')" id="n-goals">Goals</a>
+    <a onclick="show('contact')" id="n-contact">Contact</a>
+  </div>
+</nav>
+
+<div class="page active" id="page-home">
+  <div class="hero">
+    <div class="hero-eyebrow"><i class="ti ti-sparkles"></i> BITS Pilani Hyderabad · Cohort 2026</div>
+    <h1>Stuck? <span>Can't</span> stop.</h1>
+    <p>We're StucCan't — three builders from BITS Pilani Hyderabad who've spent 2 years coordinating fests, managing lakhs, and shipping things. Now we're here to code.</p>
+    <div class="hero-meta">
+      <span class="meta-pill"><i class="ti ti-users"></i> 3 members</span>
+      <span class="meta-pill"><i class="ti ti-building"></i> BITS Pilani Hyderabad</span>
+      <span class="meta-pill"><i class="ti ti-eye"></i> Transparency first</span>
+    </div>
+    <div class="triangle-fact">
+      <i class="ti ti-triangle"></i>
+      <p><strong>Why three?</strong> The triangle is the strongest shape in nature — no matter how much pressure you apply, it holds. We're three, and we hold.</p>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="page-team">
+  <p class="sec-eye">The crew</p>
+  <h2 class="sec-title">Meet the team</h2>
+  <p class="sec-sub">Three people, two years on campus, zero hesitation. Click a card to flip it.</p>
+  <div class="flip-grid" id="tgrid"></div>
+</div>
+
+<div class="page" id="page-skills">
+  <p class="sec-eye">What we bring</p>
+  <h2 class="sec-title">Skills map</h2>
+  <p class="sec-sub">Who owns what — and what we all carry together.</p>
+  <div class="skills-wrap" id="smap"></div>
+  <div class="wgrid" id="wgrid"></div>
+</div>
+
+<div class="page" id="page-goals">
+  <p class="sec-eye">What we're chasing</p>
+  <h2 class="sec-title">Goals & working style</h2>
+  <p class="sec-sub">Our vision is simple — make everything so clear a stranger can understand it.</p>
+  <div class="card-grid">
+    <div class="dcard"><div class="dicon"><i class="ti ti-eye"></i></div><h4>Our core vision</h4><p>Transparency above all. Every decision, every line of code, every process — documented clearly so anyone can walk in and understand what we're building.</p></div>
+    <div class="dcard"><div class="dicon"><i class="ti ti-cpu"></i></div><h4>Technologies to learn</h4><p>FastAPI, JavaScript, Python, React, HTML/CSS, Docker, deployment pipelines, and testing frameworks — each of us owns a lane.</p></div>
+    <div class="dcard"><div class="dicon"><i class="ti ti-trophy"></i></div><h4>We've done hard things</h4><p>Two years coordinating fests and departments at BITS Pilani Hyderabad, handling budgets in the lakhs. We know how to execute under pressure.</p></div>
+    <div class="dcard"><div class="dicon"><i class="ti ti-brand-github"></i></div><h4>Open source interests</h4><p>freeCodeCamp, FOSSASIA, GSoC — and building developer tools that are actually useful to students like us.</p></div>
+  </div>
+</div>
+
+<div class="page" id="page-contact">
+  <p class="sec-eye">Reach out</p>
+  <h2 class="sec-title">Contact us</h2>
+  <p class="sec-sub">BITS Pilani Hyderabad — find us here.</p>
+  <div class="cbox">
+    <p class="cbox-intro">We're three enthusiastic people who love code, coordination, and building things that matter. Drop us a mail or find us on GitHub.</p>
+    <div class="contact-cards" id="ccards"></div>
+    <div class="clinks">
+      <a class="clink" href="https://github.com/rich2091" target="_blank"><i class="ti ti-brand-github"></i> rich2091 on GitHub</a>
+      <a class="clink" href="#"><i class="ti ti-brand-linkedin"></i> LinkedIn</a>
+    </div>
+  </div>
+</div>
+
+<footer>crafted with late nights &amp; strong coffee · StucCan't · BITS Pilani Hyderabad · 2026</footer>
+
+<script>
+const members=[
+  {name:"Rithik Reddy",initials:"RR",color:"#AFA9EC",bg:"#26215C",role:"Backend lead",college:"BITS Pilani Hyderabad",interest:"Full-stack & backend systems",learn:"FastAPI, Python, JavaScript",hobbies:"Cricket, competitive coding",mail:"f20240038@hyderabad.bits-pilani.ac.in"},
+  {name:"Mahati VVS",initials:"MV",color:"#5DCAA5",bg:"#04342C",role:"Frontend lead",college:"BITS Pilani Hyderabad",interest:"Frontend development",learn:"HTML, CSS, React & UI systems",hobbies:"Reading, chess",mail:"f20240794@hyderabad.bits-pilani.ac.in"},
+  {name:"Aditya Nair",initials:"AN",color:"#F0997B",bg:"#4A1B0C",role:"Design & DevOps",college:"BITS Pilani Hyderabad",interest:"Design, testing & deployment",learn:"Figma, CI/CD, testing frameworks",hobbies:"Photography, music",mail:"f20240321@hyderabad.bits-pilani.ac.in"},
+];
+
+const skillMap=[
+  {member:"Rithik Reddy",initials:"RR",color:"#AFA9EC",bg:"#26215C",role:"Backend",tags:[{t:"FastAPI",c:"#26215C",b:"#AFA9EC"},{t:"Python",c:"#26215C",b:"#AFA9EC"},{t:"JavaScript",c:"#26215C",b:"#AFA9EC"}],bars:[{l:"Backend",p:85},{l:"APIs",p:75}]},
+  {member:"Mahati VVS",initials:"MV",color:"#5DCAA5",bg:"#04342C",role:"Frontend",tags:[{t:"HTML",c:"#04342C",b:"#5DCAA5"},{t:"CSS",c:"#04342C",b:"#5DCAA5"},{t:"React",c:"#04342C",b:"#5DCAA5"}],bars:[{l:"Frontend",p:85},{l:"UI/UX",p:70}]},
+  {member:"Aditya Nair",initials:"AN",color:"#F0997B",bg:"#4A1B0C",role:"Design & DevOps",tags:[{t:"Figma",c:"#4A1B0C",b:"#F0997B"},{t:"Testing",c:"#4A1B0C",b:"#F0997B"},{t:"CI/CD",c:"#4A1B0C",b:"#F0997B"}],bars:[{l:"Design",p:80},{l:"Deployment",p:75}]},
+];
+
+const workItems=[
+  {icon:"ti-calendar-check",title:"Daily check-ins",sub:"Async standups via Notion",detail:[
+    {i:"ti-brand-notion",t:"Notion tracker updated daily — tasks, blockers, progress all logged"},
+    {i:"ti-target",t:"Each member posts what they did, what's next, and if they're stuck"},
+    {i:"ti-clock",t:"15 min max — we keep it tight and move fast"},
+  ]},
+  {icon:"ti-device-desktop",title:"Weekly demos",sub:"Every Friday, see what shipped",detail:[
+    {i:"ti-presentation",t:"Each member demos what they built that week — no hiding half-done work"},
+    {i:"ti-message",t:"Feedback loop — we review, suggest, and align before the next sprint"},
+    {i:"ti-check",t:"Celebrate small wins. Every shipped thing counts."},
+  ]},
+  {icon:"ti-git-pull-request",title:"Code reviews",sub:"Min 1 reviewer on every PR",detail:[
+    {i:"ti-user-check",t:"Rithik reviews backend PRs, Mahati reviews frontend, Aditya checks design consistency"},
+    {i:"ti-eye",t:"Our transparency rule: code must be understandable to a stranger"},
+    {i:"ti-shield-check",t:"No merge without at least one approval and a quick comment"},
+  ]},
+  {icon:"ti-users",title:"Pair programming",sub:"Together on hard problems",detail:[
+    {i:"ti-plug",t:"When any of us is blocked for more than 30 min, we pair up immediately"},
+    {i:"ti-arrow-merge",t:"Backend + frontend pairing when building integrated features"},
+    {i:"ti-heart",t:"We've already done this for 2 years at BITS — we know how to coordinate"},
+  ]},
+];
+
+function renderTeam(){
+  document.getElementById('tgrid').innerHTML=members.map((m,i)=>`
+    <div class="flip-card" id="fc${i}" onclick="flip(${i})">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="avatar-ring"><div class="avatar-inner" style="background:${m.bg};color:${m.color}">${m.initials}</div></div>
+          <div class="front-name">${m.name}</div>
+          <div class="front-role">${m.role}</div>
+          <div class="flip-hint"><i class="ti ti-rotate-clockwise-2" style="font-size:12px"></i> tap to flip</div>
+        </div>
+        <div class="flip-back">
+          <div class="back-top">
+            <div class="back-av" style="background:${m.bg};color:${m.color}">${m.initials}</div>
+            <div><div class="back-name">${m.name}</div><div class="back-role">${m.role}</div></div>
+          </div>
+          <div class="drow"><i class="ti ti-building"></i><span class="dl">College</span><span class="dv">${m.college}</span></div>
+          <div class="drow"><i class="ti ti-code"></i><span class="dl">Interest</span><span class="dv">${m.interest}</span></div>
+          <div class="drow"><i class="ti ti-rocket"></i><span class="dl">Learning</span><span class="dv">${m.learn}</span></div>
+          <div class="drow"><i class="ti ti-heart"></i><span class="dl">Hobbies</span><span class="dv">${m.hobbies}</span></div>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function renderSkills(){
+  const bar_colors=["#7F77DD","#1D9E75","#D85A30"];
+  document.getElementById('smap').innerHTML=
+    skillMap.map((s,si)=>`
+      <div class="skill-member">
+        <div class="sm-header">
+          <div class="sm-av" style="background:${s.bg};color:${s.color}">${s.initials}</div>
+          <div><div class="sm-name">${s.member}</div><div class="sm-role">${s.role}</div></div>
+        </div>
+        <div class="sm-tags">${s.tags.map(t=>`<span class="stag" style="background:${t.c};color:${t.b};border-color:${t.b}33">${t.t}</span>`).join('')}</div>
+        ${s.bars.map((b,bi)=>`
+          <div class="sm-bar-row">
+            <span class="sm-blabel">${b.l}</span>
+            <div class="sm-bg"><div class="sm-fill" style="width:${b.p}%;background:${bar_colors[si]}"></div></div>
+            <span class="sm-pct">${b.p}%</span>
+          </div>`).join('')}
+      </div>`).join('')+
+    `<div class="shared-row"><i class="ti ti-infinite"></i><div><p>All three — logistics &amp; coordination</p><span>Project planning, Notion tracking, budget &amp; delivery management — 2 years of real experience at BITS fests</span></div></div>`;
+}
+
+function renderWork(){
+  document.getElementById('wgrid').innerHTML=workItems.map((w,i)=>`
+    <div class="witem" onclick="toggleWork(${i})" id="wi${i}">
+      <div class="witem-top"><i class="ti ${w.icon}"></i><p>${w.title}</p></div>
+      <span>${w.sub}</span>
+      <div class="expand-hint" id="wh${i}"><i class="ti ti-chevron-down" style="font-size:12px"></i> click to see how</div>
+      <div class="wdetail" id="wd${i}">${w.detail.map(d=>`<div class="wdetail-row"><i class="ti ${d.i}"></i><span>${d.t}</span></div>`).join('')}</div>
+    </div>`).join('');
+}
+
+function renderContact(){
+  document.getElementById('ccards').innerHTML=members.map(m=>`
+    <div class="ccard">
+      <div class="ccard-av" style="background:${m.bg};color:${m.color}">${m.initials}</div>
+      <div class="ccard-name">${m.name}</div>
+      <div class="ccard-mail">${m.mail}</div>
+    </div>`).join('');
+}
+
+function flip(i){document.getElementById('fc'+i).classList.toggle('flipped')}
+
+function toggleWork(i){
+  const d=document.getElementById('wd'+i);
+  const h=document.getElementById('wh'+i);
+  const open=d.classList.toggle('open');
+  h.innerHTML=open?'<i class="ti ti-chevron-up" style="font-size:12px"></i> collapse':'<i class="ti ti-chevron-down" style="font-size:12px"></i> click to see how';
+}
+
+function show(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  document.getElementById('n-'+id).classList.add('active');
+}
+
+renderTeam();renderSkills();renderWork();renderContact();
+</script>
+</body>
+</html>
